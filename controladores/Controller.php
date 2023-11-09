@@ -1,0 +1,36 @@
+<?php
+
+//Clase padre para todos los controladores.
+//Abstracta dado que no se instanciara y unicamente dara herencia del constructor y
+//metodo render para dibujar las vistas
+
+//Importo libreria de twig
+require_once "../vendor/autoload.php";
+
+abstract class Controller {
+
+
+    //atributo para la instancia twig
+    private $twig;
+
+    public function __construct(){
+
+        //Indicale a twig donde reocger las vistas
+        $x = new \Twig\Loader\FilesystemLoader("../vistas") ;
+        //Instancia twig con dicha configuracion y guardalo en el atributo
+        $this->twig = new \Twig\Environment($x) ;
+
+    }
+
+    //Llama el metodo render de la instancia twig y pasale 
+    //la vista y los datos a dibujar
+    public function render(string $vista, array $datos = []) {
+        echo $this->twig->render($vista, $datos) ;
+    }
+
+}
+
+
+
+
+?>
