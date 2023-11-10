@@ -16,7 +16,7 @@ abstract class Controller {
     public function __construct(){
 
         //Indicale a twig donde reocger las vistas
-        $x = new \Twig\Loader\FilesystemLoader("../vistas") ;
+        $x = new \Twig\Loader\FilesystemLoader("vistas") ;
         //Instancia twig con dicha configuracion y guardalo en el atributo
         $this->twig = new \Twig\Environment($x) ;
 
