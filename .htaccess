@@ -1,0 +1,7 @@
+RewriteEngine on
+# RewriteRule ^expresion_regular$ url_real [flags_opcionales]
+
+
+RewriteRule ^main$ index.php?m=articulo&f=listar [L]
+RewriteRule ^logout$ index.php?m=usuario&f=logout [L]
+
