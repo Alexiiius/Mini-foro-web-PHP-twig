@@ -17,9 +17,6 @@ abstract class Token{
     private function __clone(){}
 
 
-
-
-
     public static function Tokenizer():Token{
 
         if (self::$instancia==null) {
