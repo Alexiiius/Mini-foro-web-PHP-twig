@@ -15,18 +15,21 @@ $c = $GET["controlador"]??$_POST["controlador"]??"Usuario";
 //Hago un string con el nombre del controlador concadenando texto que comparten todos
 $controlador = "{$c}Controller";
 
-//Hago la ruta hacia el controlador
+//Hago la ruta hacia el controlador y compruebo que exista
 $ruta = "controladores/{$controlador}.php";
+if (!file_exists($ruta)) {
+    die("Error de acceso al controlador.");
+}
 
 //Importo y instancio el controlador
 require_once $ruta;
 $instancia = new $controlador;  //Recuerda poner primera mayuscula
 
 //Comprueba que el metodo exista y ejecutalo
-if (method_exists($controlador, $f)) {
-    $controlador->$f();
+if (method_exists($instancia, $f)) {
+    $instancia->$f();
 }else{
-    die("Error del controlador: $controlador");
+    die("Error del controlador: $instancia");
 }
 
 
