@@ -2,8 +2,7 @@
 
 // Clase singelton para el generador de Tokens
 
-abstract class Token{
-
+class Token{
 
     private static ?Token $instancia = null;
     private string $token;
@@ -15,7 +14,6 @@ abstract class Token{
         $this->token = password_hash(uniqid(mt_rand()), PASSWORD_ARGON2ID);
     }
     private function __clone(){}
-
 
     public static function Tokenizer():Token{
 
