@@ -5,7 +5,7 @@
 //metodo render para dibujar las vistas
 
 //Importo libreria de twig
-require_once "../vendor/autoload.php";
+require_once "vendor/autoload.php";
 
 abstract class Controller {
 
@@ -23,7 +23,7 @@ abstract class Controller {
     }
 
     //Llama el metodo render de la instancia twig y pasale 
-    //la vista y los datos a dibujar
+    //la vista y los datos a dibujar en forma de array vacio si no se envian datos
     public function render(string $vista, array $datos = []) {
         echo $this->twig->render($vista, $datos) ;
     }
