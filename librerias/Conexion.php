@@ -16,6 +16,7 @@
 
         try {
             
+            //$uri = "mysql:host".HOST";dbname=".name";charset=UTF-8";
             $this->$pdo = new PDO("mysql:host=".direccion.";dbname=".nombre_db, usuario, password);
             //Cambio el atributo de errores a excepciones para que no devuelva false y me diga concretamente el error si peta
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -38,7 +39,7 @@
         return self::$instancia ;
     }
 
-
+    
 
     }
 
