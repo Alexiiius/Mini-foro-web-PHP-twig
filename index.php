@@ -29,7 +29,7 @@ $instancia = new $controlador;  //Recuerda poner primera mayuscula
 if (method_exists($instancia, $f)) {
     $instancia->$f();
 }else{
-    die("Error del controlador: $instancia");
+    die("Error del controlador: $controlador con metodo $f.");
 }
 
 

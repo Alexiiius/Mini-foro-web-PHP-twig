@@ -14,12 +14,14 @@ class Usuario {
 
     public function __construct(){}
 
-/*    public static function getUsuario(int $i){
-        return Conexion::getConexion();
+    //haz la consulta y devuelve resultado
+    public static function getUsuario(int $i){
+        //TODO
     }
-*/
 
-
+    public static function loginUsuario(string $email, string $pw){
+        //TODO
+    }
 
 
 }

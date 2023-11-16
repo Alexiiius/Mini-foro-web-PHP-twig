@@ -16,6 +16,12 @@ class UsuarioController extends Controller{
         $this->render("usuario/login.php.twig", ["token" => $token]);
     }
 
+    public function login(){
+        if ($_POST["_csrf"] != $_SESSION["_csrf"]){
+            redireccion("main") ;
+        }
+    }
+
 
 
 }

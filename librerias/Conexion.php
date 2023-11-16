@@ -4,7 +4,7 @@
 
     const direccion = "mysql";
     const usuario = "root";
-    const pw = "";
+    const password = "";
     const nombreDB = "ProyectoServidor";
 
     class Conexion{
@@ -24,6 +24,18 @@
             echo "Error: " . $e->getMessage();
             die();
         }
+    }
+
+    public function __destruct() {
+        print "Destroying " . __CLASS__ . "\n";
+    }
+
+    public static function getConnection():Conexion {
+
+        if (elf::$instancia==null) {
+            self::$instancia = new Conexion ;
+        }
+        return self::$instancia ;
     }
 
 
