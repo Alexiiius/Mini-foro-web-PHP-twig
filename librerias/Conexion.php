@@ -34,7 +34,7 @@
 
     public static function getConnection():Conexion {
 
-        if (elf::$instancia==null) {
+        if (self::$instancia==null) {
             self::$instancia = new Conexion ;
         }
         return self::$instancia ;
