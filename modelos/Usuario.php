@@ -19,7 +19,7 @@ class Usuario {
         //TODO
     }
 
-    //Consulto a la DB si existe el correo del usuario y si su contraseña es la misma
+    //Consulto a la DB si existe el correo del usuario y si su contraseña es la misma devuelve un objeto usuario con sus datos
     public static function loginUsuario(string $email, string $pw){
         //TODO
         $pdo = Conexion::getConnection()->getPdo();
