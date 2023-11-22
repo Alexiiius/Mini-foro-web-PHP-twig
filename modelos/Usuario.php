@@ -6,11 +6,11 @@ class Usuario {
 
     public int $idUsuario;
     public string $email;
-    public string $DNI;
+    public ?string $DNI;
     public string $pw; 
     public string $nombre;
-    public string $apellido;
-    public string $telefono;
+    public ?string $apellido;
+    public ?string $telefono;
 
     public function __construct(){}
 
@@ -25,7 +25,6 @@ class Usuario {
         $pdo = Conexion::getConnection()->getPdo();
         $stmt = $pdo->prepare("SELECT * FROM Usuarios WHERE email = :correo");
         $stmt->bindValue(':correo', $email, PDO::PARAM_STR);
-        $stmt->bindValue(':pw', $pw, PDO::PARAM_STR);
         $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
