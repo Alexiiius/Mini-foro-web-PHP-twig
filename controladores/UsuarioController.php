@@ -11,14 +11,14 @@ class UsuarioController extends Controller{
 
         //Genero un token nuevo, guardo en session y pido la vista
         $token = Token::tokenizer()->getToken();
-        $SESSION_["token"] = $token;
+        $_SESSION["token"] = $token;
 
         $this->render("usuario/login.php.twig", ["token" => $token]);
     }
 
     public function login(){
-        if ($_POST["_csrf"] != $_SESSION["_csrf"]){
-            redireccion("main") ;
+        if ($_POST["_csrf"] != $_SESSION["token"]){
+            redireccion("main");
         }
     }
 
