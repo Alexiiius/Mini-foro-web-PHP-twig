@@ -13,7 +13,7 @@ class UsuarioController extends Controller{
         $this->render("usuario/login.php.twig", ["token" => $token]);
     }
 
-    //Comprueba el token y si existe el usuario en la base de datos
+    //Comprueba el token y si existe el usuario en la base de datos lo guarda en session y crea el tiempo de expiracion
     public function login(){
         if ($_POST["_csrf"] != $_SESSION["token"] || empty($_POST["email"]) || empty($_POST["pass"])){
             $this->redireccion("main");
@@ -26,12 +26,14 @@ class UsuarioController extends Controller{
             }
             $_SESSION["inicio"]  = time();
             $_SESSION["expira"]  = $_SESSION["inicio"] + (5 * 60);  //5 minutos para expirar sesion
+            $_SESSION["usuario"] = $usuario;
             var_dump($usuario);
         }
     }
 
-    public function registrar(){
+    public function registro(){
         //TODO
+        echo "registro";
     }
 
 
