@@ -20,14 +20,11 @@ class UsuarioController extends Controller{
         }else{
             $usuario = Usuario::loginUsuario($_POST["email"], $_POST["pass"]);
             if (is_null($usuario)) {
-                $this->redireccion("login");
-                //TODO add error correo o contraseña no correcto
-                $_SESSION['errorMensaje'] = "Contraseña o correo no correcto.";
+                $this->renderLogin("Contraseña o correo no correcto.");
             }
             $_SESSION["inicio"]  = time();
             $_SESSION["expira"]  = $_SESSION["inicio"] + (5 * 60);  //5 minutos para expirar sesion
             $_SESSION["usuario"] = $usuario;
-            var_dump($usuario);
         }
     }
 
