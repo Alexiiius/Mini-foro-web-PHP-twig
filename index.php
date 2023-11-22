@@ -9,8 +9,8 @@ session_start();
 // Esto se encarga de recoger cualquier informacion de los formularios 
 // que hayan direccionado hasta index
 
-$f = $GET["funcion"]??$_POST["funcion"]??"renderLogin";         //Por defecto renderizamos el login siempre en ausencia de otra orden
-$c = $GET["controlador"]??$_POST["controlador"]??"Usuario";
+$f = $_GET["funcion"]??$_POST["funcion"]??"renderLogin";         //Por defecto renderizamos el login siempre en ausencia de otra orden
+$c = $_GET["controlador"]??$_POST["controlador"]??"Usuario";
 
 //Hago un string con el nombre del controlador concadenando texto que comparten todos
 $controlador = "{$c}Controller";
