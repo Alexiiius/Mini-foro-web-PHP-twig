@@ -16,11 +16,11 @@ class UsuarioController extends Controller{
     //Comprueba el token y si existe el usuario en la base de datos
     public function login(){
         if ($_POST["_csrf"] != $_SESSION["token"] || empty($_POST["email"]) || empty($_POST["pass"])){
-            redireccion("main");
+            $this->redireccion("main");
         }else{
             $usuario = Usuario::loginUsuario($_POST["email"], $_POST["pass"]);
             if (is_null($usuario)) {
-                redireccion("main");
+                $this->redireccion("main");
                 //TODO add error correo o contraseña no correcto
                 $_SESSION['errorMensaje'] = "Contraseña o correo no correcto.";
             }
