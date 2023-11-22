@@ -25,7 +25,6 @@ class Usuario {
         $pdo = Conexion::getConnection()->getPdo();
         $stmt = $pdo->prepare("SELECT * FROM Usuarios WHERE email = :correo");
         $stmt->bindValue(':correo', $email, PDO::PARAM_STR);
-        $pw = (password_hash($pw, PASSWORD_ARGON2ID));
         $stmt->bindValue(':pw', $pw, PDO::PARAM_STR);
         $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
