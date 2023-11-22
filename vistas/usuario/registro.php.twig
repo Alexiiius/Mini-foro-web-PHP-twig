@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Registro</title>
+	<link rel="stylesheet" href="./vistas/CSS/login.css">
+</head>
+<body>
+
+	<div class="container">
+
+		<form action="index.php" method="post">
+
+			<input type="hidden" name="controlador" value="usuario" />
+			<input type="hidden" name="funcion" value="registro" />
+
+			
+			<div class="row">
+				<div class="col-xs-2">
+					<label for="Email">Email: </label>
+				</div>
+
+				<div class="col">
+					<input class="form-control" value=""
+						   id="email" type="email" name="email" />
+				</div>
+			</div>
+
+            <div class="row">
+				<div class="col-xs-2">
+					<label for="pass">Nombre: </label>
+				</div>
+
+				<div class="col">
+					<input class="form-control" value=""
+						   id="nombre" type="text" name="nombre" />
+				</div>
+			</div>
+
+			
+			<div class="row">
+				<div class="col-xs-2">
+					<label for="pass">Contraseña: </label>
+				</div>
+
+				<div class="col">
+					<input class="form-control" value=""
+						   id="pass" type="password" name="pass" />
+				</div>
+			</div>
+		
+			<div class="row mt-2">
+				<div class="col">
+					<button class="btn btn-dark w-25">Enviar Datos</button>
+				</div>
+			</div>
+			
+		</form>
+		<a href="index.php">Login</a>
+	</div>
+
+
+</body>
+</html>
