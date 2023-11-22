@@ -47,7 +47,12 @@
 			</div>
 			
 		</form>
-		<a href="index.php?controlador=usuario&funcion=renderRegistro">Registrarse</a>
+		{% if mensaje %}
+			<p style="display: block;">{{ mensaje }}</p>
+		{% else %}
+			<p style="display: none;"></p>
+		{% endif %}
+		<p>¿No tienes cuenta? <a href="registro">Registrarse</a> </p>
 	</div>
 
 

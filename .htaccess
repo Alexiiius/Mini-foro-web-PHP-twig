@@ -2,8 +2,9 @@ RewriteEngine on
 # RewriteRule ^expresion_regular$ url_real [flags_opcionales]
 
 
-RewriteRule ^main$ index.php [L]
-RewriteRule ^logout$ index.php?m=usuario&f=logout [L]
+RewriteRule ^login$ index.php [L]
+#RewriteRule ^logout$ index.php?m=usuario&f=logout [L]
+RewriteRule ^registro$ index.php?controlador=usuario&funcion=renderRegistro [L]
 
 #FLags QSA permite añadir datos en el propio enlace
 # RewriteRule ^seriesgenero$ index.php?m=serie&q=genero [QSA, L]
