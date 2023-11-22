@@ -32,12 +32,21 @@ class UsuarioController extends Controller{
     }
 
     //Renderizo la vista de registro
-    public function renderRegistro(){
-        $this->render("usuario/registro.php.twig");
+    public function renderRegistro(string $mensaje = null){
+        $this->render("usuario/registro.php.twig", ["mensaje" => $mensaje]);
     }
 
     public function registro(){
-        $this->renderLogin("Usuario registrado correctamente.");
+        if ( empty($_POST["email"]) || empty($_POST["nombre"]) || empty($_POST["pass"])){
+            $this->redireccion("registro");
+        }
+
+        $registro = Usuario::registrarUsuario($_POST["nombre"], $_POST["email"], $_POST["pass"]);
+        if ($registro > 0) {
+            $this->renderLogin("Usuario registrado correctamente.");
+        }else{
+            $this->renderRegistro("Error al registrar usuario.");
+        }
     }
 
 
