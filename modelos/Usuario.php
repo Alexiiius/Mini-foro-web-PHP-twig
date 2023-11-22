@@ -35,7 +35,7 @@ class Usuario {
             $usuario->idUsuario = $resultado['idUsuario'];
             $usuario->email = $resultado['email'];
             $usuario->DNI = $resultado['DNI'];
-            $usuario->pw = $resultado['pw'];
+            $usuario->pw = $resultado['contraseña'];
             $usuario->nombre = $resultado['nombre'];
             $usuario->apellido = $resultado['apellido'];
             $usuario->telefono = $resultado['telefono'];
@@ -45,7 +45,7 @@ class Usuario {
             unset($pdo);
             return null;
         }
-        
+
     }
 
     public static function registrarUsuario(){
