@@ -28,6 +28,11 @@ abstract class Controller {
         echo $this->twig->render($vista, $datos) ;
     }
 
+    //Metodo para redireccionar a otras rutas desde el propio controlador.
+    public function redireccion(string $ruta){
+        header("Location: $ruta");
+    }
+
 }
 
 
