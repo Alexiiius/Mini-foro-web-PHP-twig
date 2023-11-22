@@ -25,7 +25,8 @@ class UsuarioController extends Controller{
                 $_SESSION['errorMensaje'] = "Contraseña o correo no correcto.";
             }
             $_SESSION["inicio"]  = time();
-            echo "Usuario logueado";
+            $_SESSION["expira"]  = $_SESSION["inicio"] + (5 * 60);  //5 minutos para expirar sesion
+            var_dump($usuario);
         }
     }
 
