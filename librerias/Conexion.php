@@ -17,10 +17,10 @@
         try {
             
             //$uri = "mysql:host".HOST";dbname=".name";charset=UTF-8";
-            $this->$pdo = new PDO("mysql:host=".direccion.";dbname=".nombre_db, usuario, password);
+            $this->pdo = new PDO("mysql:host=".direccion.";dbname=".nombreDB, usuario, password);
             //Cambio el atributo de errores a excepciones para que no devuelva false y me diga concretamente el error si peta
             //en cualquier lugar mientras se use la conexion
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -30,6 +30,10 @@
 
     public function __destruct() {
         $this->pdo = null;
+    }
+
+    public function getPdo(): PDO {
+        return $this->pdo;
     }
 
     public static function getConnection():Conexion {
