@@ -14,6 +14,10 @@ class UsuarioController extends Controller{
         $token = Token::tokenizer()->getToken();
         $_SESSION["token"] = $token;
         $idMensaje = $_GET["mensaje"]??0;
+        //En caso de que el mensaje no este entre 0 y 2 se pone el mensaje por defecto
+        if ($idMensaje < 0 || $idMensaje > 2) {
+            $idMensaje = 0;
+        }
         $this->render("usuario/login.php.twig", ["token" => $token, "mensaje" => self::MENSAJE[$idMensaje] ]);
     }
 
