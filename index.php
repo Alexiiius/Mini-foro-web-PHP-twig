@@ -12,6 +12,17 @@ session_start();
 $f = $_GET["funcion"]??$_POST["funcion"]??"renderLogin";         //Por defecto renderizamos el login siempre en ausencia de otra orden
 $c = $_GET["controlador"]??$_POST["controlador"]??"Usuario";
 
+//Comprobacion de sesion timeout forzando el cierre de sesion y redirigiendo al login
+//El expire se guarda en la sesion con el tiempo de inicio de sesion + 5 minutos en el metodo loginUsuario del controlador Usuario
+if (isset($_SESSION["expira"]) && $_SESSION["expira"] < time()) {
+    //la sesion ha expirado, la destruyo y la inicio de nuevo
+    session_destroy();
+    session_start();
+    // Redirigir al usuario a la pagina de inicio de sesión
+    $f = "renderLogin";
+    $c = "Usuario";
+}
+
 //Hago un string con el nombre del controlador concadenando texto que comparten todos
 $controlador = "{$c}Controller";
 
