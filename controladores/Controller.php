@@ -6,6 +6,7 @@
 
 //Importo libreria de twig
 require_once "vendor/autoload.php";
+require_once "librerias/twigExtension.php";
 
 abstract class Controller {
 
@@ -19,7 +20,7 @@ abstract class Controller {
         $x = new \Twig\Loader\FilesystemLoader("vistas") ;
         //Instancia twig con dicha configuracion y guardalo en el atributo
         $this->twig = new \Twig\Environment($x) ;
-
+        $this->twig->addExtension(new TwigExtensions);
     }
 
     //Llama el metodo render de la instancia twig y pasale 
