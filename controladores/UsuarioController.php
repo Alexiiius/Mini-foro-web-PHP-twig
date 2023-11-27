@@ -8,7 +8,8 @@ class UsuarioController extends Controller{
 
     const MENSAJE = [null, "Contraseña o correo no correcto.", "Usuario registrado correctamente.", "Error al registrar usuario."];
 
-    //Genero un token nuevo, guardo en session y rederizo la vista pasando el token
+    //Genero un token nuevo, guardo en session y rederizo la vista pasando el token y en caso de error se 
+    //pasa mediante la url el mensaje de error recogido desde la constante MENSAJE que sera null si no hay error
     public function renderLogin(){
         $token = Token::tokenizer()->getToken();
         $_SESSION["token"] = $token;
