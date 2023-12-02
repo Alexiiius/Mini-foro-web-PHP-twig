@@ -19,8 +19,9 @@ class Usuario {
         //TODO
     }
 
-    //Consulto a la DB si existe el correo del usuario y si su contraseña es la misma devuelve un objeto usuario con sus datos
-    //De otro modo cierra la conexion en pdo y devuelve null
+    //Consulto a la DB si existe el correo del usuario y si su contraseña es la misma devuelve un objeto usuario con sus datos. 
+    //De otro modo cierra la conexion y devuelve null.
+    //Los datos del usuario obtenido se guardan en un objeto usuario y se devuelve. Puede haber datos nulos tales como DNI, apellido y telefono.
     public static function loginUsuario(string $email, string $pw){
         $pdo = Conexion::getConnection()->getPdo();
         $stmt = $pdo->prepare("SELECT * FROM Usuarios WHERE email = :correo");
@@ -47,7 +48,7 @@ class Usuario {
     }
 
     //Inserta un nuevo usuario en la base de datos y devuelve el numero de filas afectadas
-    //En caso de error devuelve 0
+    //En caso de error devuelve 0. Este error contempla el correo repetido.
     //La contraseña se encripta con password_hash usando el algoritmo PASSWORD_ARGON2ID
     //La comprobacion de la contraseña se hace con password_verify en el metodo loginUsuario
     public static function registrarUsuario(string $nombre, string $email, string $pw){
@@ -69,3 +70,5 @@ class Usuario {
 
 
 }
+
+?>

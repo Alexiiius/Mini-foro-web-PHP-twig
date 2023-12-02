@@ -8,8 +8,8 @@ class UsuarioController extends Controller{
 
     const MENSAJE = [null, "Contraseña o correo no correcto.", "Usuario registrado correctamente.", "Error al registrar usuario."];
 
-    //Genero un token nuevo, guardo en session y rederizo la vista pasando el token y en caso de error se 
-    //pasa mediante la url el mensaje de error recogido desde la constante MENSAJE que sera null si no hay error
+    //Genero un token nuevo, guardo en session y rederizo la vista pasando el token
+    //Mediante GET se esta pasando el numero del mensaje que contiene el array MENSAJE para mostrar el mensaje correspondiente
     public function renderLogin(){
         $token = Token::tokenizer()->getToken();
         $_SESSION["token"] = $token;
@@ -21,7 +21,8 @@ class UsuarioController extends Controller{
         $this->render("usuario/login.php.twig", ["token" => $token, "mensaje" => self::MENSAJE[$idMensaje] ]);
     }
 
-    //Comprueba el token y si existe el usuario en la base de datos lo guarda en session y crea el tiempo de expiracion
+    //Comprueba el token y si existe el usuario en la base de datos
+    //En caso afirmativo, se guarda el usuario recuperado en la sesion y se redirige a la pagina de inicio junto con la variable de sesion inicio y expira
     public function login(){
         if ($_POST["_csrf"] != $_SESSION["token"] || empty($_POST["email"]) || empty($_POST["pass"])){
             $this->redireccion("login");
@@ -33,11 +34,13 @@ class UsuarioController extends Controller{
             }
             $_SESSION["inicio"]  = time();
             $_SESSION["expira"]  = $_SESSION["inicio"] + (5 * 60);  //5 minutos para expirar sesion
-            $_SESSION["usuario"] = $usuario;
+            $_SESSION["usuario"] = serialize($usuario); //Guardo el objeto usuario en la sesion serializado
+            $this->redireccion("home");
         }
     }
 
     //Renderizo la vista de registro
+    //En caso de que el mensaje no este entre 0 y 3 se pone el mensaje por defecto
     public function renderRegistro(){
         $idMensaje = $_GET["mensaje"]??0;
         $this->render("usuario/registro.php.twig", ["mensaje" => self::MENSAJE[$idMensaje] ]);
