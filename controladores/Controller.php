@@ -34,6 +34,23 @@ abstract class Controller {
         header("Location: $ruta");
     }
 
+    //Actualiza la sesion si esta activa y no ha expirado mientras el usuario navega por la web
+    public function sessionUpdate(){
+        if (isset($_SESSION["inicio"]) && isset($_SESSION["expira"])) {
+            if ($_SESSION["inicio"] < time() && $_SESSION["expira"] > time()) {
+                $_SESSION["inicio"] = time();
+                $_SESSION["expira"] = $_SESSION["inicio"] + (5 * 60);  //5 minutos para expirar sesion
+                return true;
+            }else{
+                session_destroy();
+                return false;
+            }
+        }else{
+            session_destroy();
+            return false;
+        }
+    }
+
 }
 
 
