@@ -20,13 +20,27 @@ class Articulo {
         $stmt->bindValue(':idArticulo', $i, PDO::PARAM_INT);
         $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $articulo = new Articulo();
+        $articulo->idArticulo = $resultado['idArticulo'];
+        $articulo->idAutor = $resultado['idAutor'];
+        $articulo->titulo = $resultado['titulo'];
+        $articulo->contenido = $resultado['contenido'];
+        $articulo->fecha = $resultado['fecha'];
+
         unset($pdo);
-        return $resultado;
+        return $articulo;
     }
 
+    //Devuelve un array con todos los articulos de la DB y sus respectivos autores 
+    //y el rating promedio redondeado a 1 decimal
     public static function getArticulos(){
         $pdo = Conexion::getConnection()->getPdo();
-        $stmt = $pdo->prepare("SELECT * FROM Articulos");
+        $stmt = $pdo->prepare("SELECT Articulos.*, Usuarios.nombre, ROUND(AVG(Ratings.puntuaje), 1) as rating 
+                                FROM Articulos 
+                                JOIN Usuarios ON Articulos.id_autor = Usuarios.idUsuario 
+                                LEFT JOIN Ratings ON Articulos.idArticulo = Ratings.id_articulo 
+                                GROUP BY Articulos.idArticulo");
         $stmt->execute();
         $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
         unset($pdo);
