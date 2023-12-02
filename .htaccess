@@ -5,7 +5,7 @@ RewriteEngine on
 RewriteRule ^login$ index.php [QSA,L]
 #RewriteRule ^logout$ index.php?m=usuario&f=logout [L]
 RewriteRule ^registro$ index.php?controlador=usuario&funcion=renderRegistro [QSA,L]
-RewriteRule ^home$ index.php?controlador=articulo&funcion=home [L]
+RewriteRule ^home$ index.php?controlador=articulo&funcion=renderHome [L]
 
 #FLags QSA permite añadir datos en el propio enlace
 # RewriteRule ^seriesgenero$ index.php?m=serie&q=genero [QSA,L]
