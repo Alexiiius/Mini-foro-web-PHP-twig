@@ -34,8 +34,23 @@ abstract class Controller {
         header("Location: $ruta");
     }
 
-    //Actualiza la sesion si esta activa y no ha expirado mientras el usuario navega por la web
+    //Conjunto de uso de ambas funciones de comprobacion de sesion.
     public function sessionUpdate(){
+        $this->checkOff();
+        $this->checkOn();
+    }
+
+    //Comprobar si el usuario ha iniciado sesion. Si no es asi, destruye la sesion y redirige al login.
+    public function checkOff(){
+        if (!isset($_SESSION["usuario"])) {
+            session_destroy();
+            session_start();
+            $this->redireccion("login");
+        }
+    }
+
+    //Comprueba si la sesion no ha expirado y la actualiza. Si ha expirado, destruye la sesion y redirige al login.
+    public function checkOn(){
         if (isset($_SESSION["inicio"]) && isset($_SESSION["expira"])) {
             if ($_SESSION["expira"] > time()) {
                 $_SESSION["inicio"] = time();
@@ -43,11 +58,11 @@ abstract class Controller {
                 return true;
             }else{
                 session_destroy();
-                return false;
+                $this->redireccion("login");
             }
         }else{
             session_destroy();
-            return false;
+            $this->redireccion("login");
         }
     }
 
