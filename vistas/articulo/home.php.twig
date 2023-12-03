@@ -56,8 +56,10 @@
                             <span class="badge badge-primary">{{ articulo.rating }}</span>
                         </div>
                     </div>
-                    <form action="ruta_para_agregar_nota" method="post" class="d-flex">
+                    <form action="index.php?controlador=articulo&funcion=puntuarArticulo" method="post" class="d-flex">
                         <input type="hidden" name="id_articulo" value="{{ articulo.idArticulo }}">
+                        <input type="hidden" name="id_usuario" value="{{ _session.usuario.idUsuario }}">
+                        <input type="hidden" name="_csrf" value="{{ token }}" />
                         <div class="form-group mr-2" style="width: 100px;">
                             <input type="number" name="nota" min="0" max="10" step="0.1" value="0" required class="form-control form-control-sm">
                         </div>
@@ -68,5 +70,15 @@
         {% endfor %}
     </div>
 <!-- FIN ARTICULOS -->
+
+{% if mensaje %}
+    <script>
+        window.onload = function() {
+            alert("{{ mensaje }}");
+        };
+    </script>
+{% endif %}
+
+
 
 {% endblock %}
