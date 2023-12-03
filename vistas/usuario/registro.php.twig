@@ -4,66 +4,49 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Registro</title>
-	<link rel="stylesheet" href="./vistas/CSS/login.css">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./vistas/CSS/formulario.css" rel="stylesheet">
 </head>
 <body>
 
+<div id="viewport" >
 	<div class="container">
-
-		<form action="index.php" method="post">
-
-			<input type="hidden" name="controlador" value="usuario" />
-			<input type="hidden" name="funcion" value="registro" />
-
-			
-			<div class="row">
-				<div class="col-xs-2">
-					<label for="Email">Email: </label>
-				</div>
-
-				<div class="col">
-					<input class="form-control" value=""
-						   id="email" type="email" name="email" />
-				</div>
-			</div>
-
-            <div class="row">
-				<div class="col-xs-2">
-					<label for="pass">Nombre: </label>
-				</div>
-
-				<div class="col">
-					<input class="form-control" value=""
-						   id="nombre" type="text" name="nombre" />
-				</div>
-			</div>
-
-			
-			<div class="row">
-				<div class="col-xs-2">
-					<label for="pass">Contraseña: </label>
-				</div>
-
-				<div class="col">
-					<input class="form-control" value=""
-						   id="pass" type="password" name="pass" />
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header text-center">Registro</div>
+					<div class="card-body">
+						<form action="index.php" method="post">
+							<input type="hidden" name="controlador" value="usuario" />
+							<input type="hidden" name="funcion" value="registro" />
+							<div class="form-group">
+								<label for="email">Email: </label>
+								<input class="form-control" id="email" type="email" name="email" required />
+							</div>
+							<div class="form-group">
+								<label for="nombre">Nombre: </label>
+								<input class="form-control" id="nombre" type="text" name="nombre" required />
+							</div>
+							<div class="form-group">
+								<label for="pass">Contraseña: </label>
+								<input class="form-control" id="pass" type="password" name="pass" required />
+							</div>
+							<div class="form-group text-center">
+								<button class="btn btn-dark w-50">Registrarse</button>
+							</div>
+						</form>
+						{% if mensaje %}
+							<div class="alert alert-info text-center" role="alert">
+								{{ mensaje }}
+							</div>
+						{% endif %}
+						<p class="text-center">¿Ya tienes cuenta? <a href="login">Login</a></p>
+					</div>
 				</div>
 			</div>
-		
-			<div class="row mt-2">
-				<div class="col">
-					<button class="btn btn-dark w-25">Enviar Datos</button>
-				</div>
-			</div>
-			
-		</form>
-		{% if mensaje %}
-			<p style="visibility: visible;">{{ mensaje }}</p>
-		{% else %}
-			<p style="visibility: hidden;"></p>
-		{% endif %}
-        <p>¿Ya tienes cuenta? <a href="login">Login</a> </p>
+		</div>
 	</div>
+</div>
 
 
 </body>
