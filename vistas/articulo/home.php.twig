@@ -4,10 +4,39 @@
 {% block title %}Home{% endblock %}
 
 
-
+<!-- BLOQUE DE CONTENIDO MAIN -->
 {% block contenido %}
-<br>
-<h1 class="text-center mb-4">Lista de Articulos</h1>
+    <br>
+    <h1 class="text-center mb-4">Lista de Articulos</h1>
+
+
+<!-- BOTON DESPLEGABLE FORMULARIO INSERTAR ARTICULO -->
+    <div class="container">
+        <button class="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#crearArticulo" aria-expanded="false" aria-controls="crearArticulo">
+            Crear Articulo
+        </button>
+
+        <div class="collapse" id="crearArticulo">
+            <div class="card card-body">
+                <h4 class="text-center mb-4">Crear Articulo</h4>
+                <form action="ruta_para_crear_articulo" method="post" class="mb-4 mx-auto w-50">
+                    <div class="form-group">
+                        <label for="titulo">Titulo</label>
+                        <input type="text" id="titulo" name="titulo" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="contenido">Contenido</label>
+                        <input type="text" id="contenido" name="contenido" required class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear Articulo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- FIN DE BOTON DESPLEGABLE -->
+
+
+<!-- ARTICULOS DENTRO DE UN FOR -->
     <div class="container">
         {% for articulo in articulos %}
             <div class="card mb-4">
@@ -32,4 +61,6 @@
             </div>
         {% endfor %}
     </div>
+<!-- FIN ARTICULOS -->
+
 {% endblock %}
