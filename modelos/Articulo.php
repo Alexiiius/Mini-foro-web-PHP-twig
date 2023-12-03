@@ -79,6 +79,20 @@ class Articulo {
         return $resultado;
     }
 
+
+    //Registra el rating de un articulo en la DB junto con el usuario que lo puntuo
+    public static function puntuar(int $idArticulo, int $idUsuario, int $puntuaje){
+        $pdo = Conexion::getConnection()->getPdo();
+        $stmt = $pdo->prepare("INSERT INTO Ratings (id_articulo, id_usuario, puntuaje) VALUES (?, ?, ?)");
+        $stmt->bindParam(1, $idArticulo, PDO::PARAM_INT);
+        $stmt->bindParam(2, $idUsuario, PDO::PARAM_INT);
+        $stmt->bindParam(3, $puntuaje, PDO::PARAM_INT);
+        $stmt->execute();
+        $resultado = $stmt->rowCount();
+        unset($pdo);
+        return $resultado;
+    }
+
 }
 
 ?>
