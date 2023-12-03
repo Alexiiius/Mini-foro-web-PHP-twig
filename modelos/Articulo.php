@@ -87,8 +87,12 @@ class Articulo {
         $stmt->bindParam(1, $idArticulo, PDO::PARAM_INT);
         $stmt->bindParam(2, $idUsuario, PDO::PARAM_INT);
         $stmt->bindParam(3, $puntuaje, PDO::PARAM_INT);
-        $stmt->execute();
-        $resultado = $stmt->rowCount();
+        try {
+            $stmt->execute();
+            $resultado = $stmt->rowCount();
+        } catch (PDOException $e) {
+            $resultado = 0;
+        }
         unset($pdo);
         return $resultado;
     }
