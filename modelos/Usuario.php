@@ -19,17 +19,28 @@ class Usuario {
         //TODO
     }
 
-    //Consulto a la DB si existe el correo del usuario y si su contraseña es la misma devuelve un objeto usuario con sus datos. 
-    //De otro modo cierra la conexion y devuelve null.
-    //Los datos del usuario obtenido se guardan en un objeto usuario y se devuelve. Puede haber datos nulos tales como DNI, apellido y telefono.
-    public static function loginUsuario(string $email, string $pw){
+    public  static function getUsuarioByEmail(string $email){
         $pdo = Conexion::getConnection()->getPdo();
         $stmt = $pdo->prepare("SELECT * FROM Usuarios WHERE email = :correo");
         $stmt->bindValue(':correo', $email, PDO::PARAM_STR);
         $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        unset($pdo);
+        return $resultado;
+    }
 
-        if ($resultado && password_verify($pw, $resultado['contraseña'])) {
+    //Consulto a la DB si existe el correo del usuario y si su contraseña es la misma devuelve un objeto usuario con sus datos. 
+    //De otro modo cierra la conexion y devuelve null.
+    //Los datos del usuario obtenido se guardan en un objeto usuario y se devuelve. Puede haber datos nulos tales como DNI, apellido y telefono.
+    public static function loginUsuario(string $email, string $pw){
+
+        $resultado = self::getUsuarioByEmail($email);
+
+        if (!$resultado) {
+            return null;
+        }
+
+        if (password_verify($pw, $resultado['contraseña'])) {
             $usuario = new Usuario();
             $usuario->idUsuario = $resultado['idUsuario'];
             $usuario->email = $resultado['email'];
@@ -38,10 +49,8 @@ class Usuario {
             $usuario->nombre = $resultado['nombre'];
             $usuario->apellido = $resultado['apellido'];
             $usuario->telefono = $resultado['telefono'];
-            unset($pdo);
             return $usuario;
         } else {
-            unset($pdo);
             return null;
         }
 
@@ -56,8 +65,8 @@ class Usuario {
         $stmt = $pdo->prepare("INSERT INTO Usuarios (email, nombre, contraseña) VALUES (?, ?, ?)");
         $stmt->bindParam(1, $email, PDO::PARAM_STR);
         $stmt->bindParam(2, $nombre, PDO::PARAM_STR);
-        $pw = (password_hash($pw, PASSWORD_ARGON2ID));
-        $stmt->bindParam(3, $pw, PDO::PARAM_STR);
+        $pw2 = (password_hash($pw, PASSWORD_ARGON2ID));
+        $stmt->bindParam(3, $pw2, PDO::PARAM_STR);
         try {
             $stmt->execute();
             $resultado = $stmt->rowCount();
