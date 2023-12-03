@@ -5,7 +5,6 @@ require_once "Controller.php";
 require_once "modelos/Articulo.php";
 require_once "librerias/Token.php";
 
-
 class ArticuloController extends Controller{
 
 
@@ -14,14 +13,10 @@ class ArticuloController extends Controller{
     //De no existir se redirige a la pagina de login
     public function renderHome(){
 
-        if (!$this->sessionUpdate()) {
-            $this->redireccion("login");
-        }
-
+        $this->sessionUpdate();
         if (isset($_SESSION["usuario"])) {
-            $usuario = unserialize($_SESSION["usuario"]);
             $articulos = Articulo::getArticulos();
-            $this->render("articulo/home.php.twig", ["articulos" => $articulos, "usuario" => $usuario]);
+            $this->render("articulo/home.php.twig", ["articulos" => $articulos]);
         }else{  
             $this->redireccion("login");
         }
