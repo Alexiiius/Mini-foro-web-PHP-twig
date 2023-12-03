@@ -2,12 +2,18 @@
 
 
 {% block title %}Home{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="./vistas/CSS/home.css">
+{% endblock %}
 
 
+
+{% block contenido %} 
 <!-- BLOQUE DE CONTENIDO MAIN -->
-{% block contenido %}
     <br>
-    <h1 class="text-center mb-4">Lista de Articulos</h1>
+    <div class="w-25 mx-auto">
+        <h1 id="h1Texto" class="text-center mb-4 bg-color">Lista de Articulos</h1>
+    </div>
 
 
 <!-- BOTON DESPLEGABLE FORMULARIO INSERTAR ARTICULO -->

@@ -1,0 +1,16 @@
+.bg-color {
+    background-color: #3d5e7e; 
+    border-radius: 50px;
+}
+
+#h1Texto{
+    color:aliceblue
+}
+
+.container{
+    margin-bottom: 1%;
+}
+
+.card{
+    background: rgba(255, 255, 255, 0.9);
+}

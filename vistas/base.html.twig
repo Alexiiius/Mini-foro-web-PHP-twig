@@ -4,29 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
-    {% block styles %}
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="./vistas/CSS/estilosMain.css" rel="stylesheet">
+    {% block styles %}{% endblock %}
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        <style>
-            body {
-                background-color: #f5f5f5;
-                font-family: Arial, sans-serif;
-            }
-
-            .footer {
-                background-color: #f8f9fa;
-                padding: 20px 0;
-                text-align: center;
-            }
-        </style>
-    {% endblock %}
     {% block scripts %}{% endblock %}
 </head>
 <body>
 
     <header>
-        {% block header %}
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="home">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +33,6 @@
                     </ul>
                 </div>
             </nav>
-        {% endblock %}
     </header>
 
     <main>
@@ -54,11 +40,10 @@
     </main>
 
     <footer class="footer">
-        {% block footer %}
-            <div class="container">
-                <p class="text-muted">FOOTER -------------  Recalco nuevamente que odio CSS con toda mi alma...</p>
+            <div class="container text-light">
+                <p>Recalco nuevamente que odio CSS con toda mi alma...</p>
+                <p>Alejandro Sánchez Fernández - <a class="text-light border-bottom" href="https://github.com/Alexiiius/Primer-proyecto-PHP-2023-2-DAW">Github</a> </p>
             </div>
-        {% endblock %}
     </footer>
 </body>
 </html>
