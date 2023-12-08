@@ -9,8 +9,13 @@
 
 .container{
     margin-bottom: 1%;
+    border-radius: 50px;
 }
 
 .card{
     background: rgba(255, 255, 255, 0.9);
+}
+
+.collapse{
+    margin-bottom: 15px;
 }
