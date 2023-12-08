@@ -32,7 +32,7 @@
                     </div>
                     <input type="hidden" name="_csrf" value="{{ token }}" />
                     <input type="hidden" name="funcion" value="crearArticulo" />
-                    <input type="hidden" name="controlador" value="articulo" />
+                    <input type="hidden" name="controlador" value="Articulo" />
                     <div class="form-group">
                         <label for="contenido">Contenido</label>
                         <textarea id="contenido" name="contenido" required class="form-control" maxlength="255" ></textarea>
@@ -65,7 +65,7 @@
                             <input type="hidden" name="id_usuario" value="{{ _session.usuario.idUsuario }}">
                             <input type="hidden" name="_csrf" value="{{ token }}" />
                             <input type="hidden" name="funcion" value="puntuarArticulo" />
-                            <input type="hidden" name="controlador" value="articulo" />
+                            <input type="hidden" name="controlador" value="Articulo" />
                             <div class="form-group mr-2" style="width: 100px;">
                                 <input type="number" name="nota" min="0" max="10" step="0.1" value="0" required class="form-control form-control-sm">
                             </div>
@@ -82,7 +82,7 @@
                                 <form method="post" action="login" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este artículo?');">
                                     <input type="hidden" name="_csrf" value="{{ token }}">
                                     <input type="hidden" name="funcion" value="eleminarArticulo">
-                                    <input type="hidden" name="controlador" value="articulo">
+                                    <input type="hidden" name="controlador" value="Articulo">
                                     <input type="hidden" name="id_articulo" value="{{ articulo.idArticulo }}">
                                     <button type="submit" class="dropdown-item">Eliminar</button>
                                 </form>
