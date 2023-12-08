@@ -7,5 +7,5 @@ RewriteRule ^logout$ index.php?controlador=Usuario&funcion=cerrarSesion [L]
 RewriteRule ^registro$ index.php?controlador=Usuario&funcion=renderRegistro [QSA,L]
 RewriteRule ^home$ index.php?controlador=Articulo&funcion=renderHome [QSA,L]
 RewriteRule ^personal$ index.php?controlador=Articulo&funcion=renderPersonal [QSA,L]
-RewriteRule ^perfil$ index.php?controlador=Asuario&funcion=renderPerfil [QSA,L]
+RewriteRule ^perfil$ index.php?controlador=Usuario&funcion=renderPerfil [QSA,L]
 

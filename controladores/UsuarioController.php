@@ -7,6 +7,7 @@ require_once "librerias/Token.php";
 class UsuarioController extends Controller{
 
     const MENSAJE = [null, "Contraseña o correo no correcto.", "Usuario registrado correctamente.", "Error al registrar usuario."];
+    const MENSAJE2 = [null];
 
     //Genero un token nuevo, guardo en session y rederizo la vista pasando el token
     //Mediante GET se esta pasando el numero del mensaje que contiene el array MENSAJE para mostrar el mensaje correspondiente
@@ -25,6 +26,18 @@ class UsuarioController extends Controller{
             $idMensaje = 0;
         }
         $this->render("usuario/login.php.twig", ["token" => $token, "mensaje" => self::MENSAJE[$idMensaje] ]);
+    }
+
+    public function renderPerfil(){
+        if (!isset($_SESSION["usuario"])) {
+            $this->redireccion("login");
+        }
+
+        $token = Token::tokenizer()->getToken();
+        $_SESSION["token"] = $token;
+        $idMensaje = $_GET["mensaje"]??0;
+
+        $this->render("usuario/perfil.php.twig", ["token" => $token, "mensaje" => self::MENSAJE2[$idMensaje] ]);
     }
 
     //Comprueba el token y si existe el usuario en la base de datos
