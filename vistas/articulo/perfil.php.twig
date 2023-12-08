@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Post{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="./vistas/CSS/home.css">
+{% endblock %}
+
+
+
+{% block contenido %} 
+<!-- BLOQUE DE CONTENIDO MAIN -->
+    <br>
+    <div class="w-25 mx-auto">
+        <h1 id="h1Texto" class="text-center mb-4 bg-color">Perfil</h1>
+    </div>
+
+<!-- ARTICULOS DENTRO DE UN FOR -->
+    <div class="container">
+
+    </div>
+<!-- FIN ARTICULOS -->
+
+{% if mensaje %}
+    <script>
+        window.onload = function() {
+            alert("{{ mensaje }}");
+        };
+    </script>
+{% endif %}
+
+
+
+{% endblock %}
