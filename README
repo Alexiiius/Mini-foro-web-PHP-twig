@@ -1,1 +1,43 @@
-TODO FUTURE
+# Proyecto: Foro Web
+
+## Descripción
+
+El proyecto consiste en una web basica de pocas paginas, donde el usuario puede crear articulos y puntuar los articulos que otros usuarios hayan publicado.
+No se tiene contemplado editar un articulo ni responder al mismo en forma de comentarios.
+
+El usuario puede registrarse en la web, logearse, crear articulos, puntuarlos, eliminarlos y editar sus propios datos de usuario.
+No se contempla que el usuario pueda eliminar su cuenta.
+
+## Tabla de Contenidos
+
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Datos_de_Interes](#Datos_de_Interes)
+
+## Instalación
+
+Para instalar y ejecutar este proyecto, sigue estos pasos:
+
+1. Asegúrate de tener instalado `npm` y `composer` en tu sistema. Si no los tienes, puedes descargarlos desde [aquí](https://www.npmjs.com/get-npm) y [aquí](https://getcomposer.org/download/), respectivamente.
+
+2. Clona este repositorio en tu máquina local usando `git clone`.
+
+3. Navega hasta el directorio del proyecto.
+
+4. Ejecuta `composer install` para instalar las dependencias del proyecto. Esto utilizará el archivo `composer.lock` que ya está en el repositorio para instalar las versiones correctas.
+
+5. Si es necesario, ejecuta `composer require nombre-de-la-dependencia` para cada dependencia adicional que necesites.
+
+6. Finalmente, ejecuta `composer dump-autoload -o` para generar el directorio `vendor` y el archivo de autoload.
+
+7. El proyecto incluye un script SQL adjunto. Utiliza este script para crear y poblar la base de datos.
+
+8. Modifica el archivo `conexion.php` que se encuentra en el directorio de `librerias`. Deberás actualizar la configuración para que apunte a la base de datos que deseas utilizar.
+
+Ahora deberías poder ejecutar el proyecto en tu entorno local.
+
+## Uso
+
+Ejemplos de uso aquí.
+
+## Datos_de_Interes
