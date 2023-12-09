@@ -4,6 +4,7 @@
 {% block title %}Post{% endblock %}
 {% block styles %}
 <link rel="stylesheet" href="./vistas/CSS/home.css">
+<link rel="stylesheet" href="./vistas/CSS/perfil.css">
 {% endblock %}
 
 
@@ -15,11 +16,138 @@
         <h1 id="h1Texto" class="text-center mb-4 bg-color">Perfil</h1>
     </div>
 
-<!-- ARTICULOS DENTRO DE UN FOR -->
-    <div class="container">
 
+<!-- CUERPO PRINCIPAL DE FORMULARIOS -->
+<div class="container mt-5">
+    <div id="cuerpo">
+        {% set usuario = _session.usuario %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Actualizar información del usuario</h5>
+                <p class="card-text">Haz clic en los botones para actualizar la información del usuario individualmente.</p>
+                
+                <!-- boton desplegable actualizar el email -->
+                <button class="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#Email" aria-expanded="false" aria-controls="Email">
+                    Actualizar Email
+                </button>
+                <!-- boton desplegable para actualizar el DNI -->
+                <button class="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#DNI" aria-expanded="false" aria-controls="DNI">
+                    Actualizar DNI
+                </button>
+                <!-- boton desplegable para actualizar el nombre -->
+                <button class="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#Nombre" aria-expanded="false" aria-controls="DNI">
+                    Actualizar Nombre
+                </button>
+                <!-- boton desplegable para actualizar la contraseña -->
+                <button class="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#Contraseña" aria-expanded="false" aria-controls="Contraseña">
+                    Actualizar Contraseña
+                </button>
+                <!-- boton desplegable para actualizar el apellido -->
+                <button class="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#Apellido" aria-expanded="false" aria-controls="Apellido">
+                    Actualizar Apellido
+                </button>
+                <!-- boton desplegable para actualizar el telefono -->
+                <button class="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#Telefono" aria-expanded="false" aria-controls="Telefono">
+                    Actualizar Teléfono
+                </button>
+                
+                <!-- formulario para actualizar el email -->
+                <div class="collapse" id="Email">
+                    <form action="login?actua=email" method="post" onsubmit="return confirm('¿Estás seguro?');">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" class="form-control" value="{{ usuario.email }}" required maxlength="30" >
+                            <input type="hidden" name="_csrf" value="{{ token }}" />
+                            <input type="hidden" name="controlador" value="Usuario" />
+                            <input type="hidden" name="funcion" value="editarDato" />
+                            <input type="hidden" name="tipo" value="email" />
+                        </div>
+                        <button type="submit" class="btn btn-success">Actualizar</button>
+                    </form>
+                </div>
+
+                <!-- formulario para actualizar el DNI -->
+                <div class="collapse" id="DNI">
+                    <form action="login?actua=dni" method="post" onsubmit="return confirm('¿Estás seguro?');">
+                        <div class="form-group">
+                            <label for="dni">DNI:</label>
+                            <input type="text" id="dni" name="dni" class="form-control" value="{{ usuario.DNI }}" required maxlength="9" minlength="9" pattern="[0-9]{8}[A-Z]{1}" title="Debe contener 8 numeros seguidos de 1 letra mayuscula.">
+                            <input type="hidden" name="_csrf" value="{{ token }}" />
+                            <input type="hidden" name="controlador" value="Usuario" />
+                            <input type="hidden" name="funcion" value="editarDato" />
+                            <input type="hidden" name="tipo" value="dni" />
+                        </div>
+                        <button type="submit" class="btn btn-success">Actualizar</button>
+                    </form>
+                </div>
+
+                <!-- formulario para actualizar el nombre -->
+                <div class="collapse" id="Nombre">
+                    <form action="login?actua=nombre" method="post" onsubmit="return confirm('¿Estás seguro?');">
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" value="{{ usuario.nombre }}" required maxlength="20" >
+                            <input type="hidden" name="_csrf" value="{{ token }}" />
+                            <input type="hidden" name="controlador" value="Usuario" />
+                            <input type="hidden" name="funcion" value="editarDato" />
+                            <input type="hidden" name="tipo" value="nombre" />
+                        </div>
+                        <button type="submit" class="btn btn-success">Actualizar</button>
+                    </form>
+                </div>
+
+                <!-- formulario para actualizar la contraseña -->
+                <div class="collapse" id="Contraseña">
+                    <form action="login?actua=pw" method="post" onsubmit="return confirm('¿Estás seguro?');">
+                        <div class="form-group">
+                            <label for="pw">Contraseña:</label>
+                            <input placeholder="Contraseña Nueva" type="password" id="pw" name="pw" class="form-control" value="" required maxlength="255">
+                            <input placeholder="Contraseña Vieja" type="password" name="pw2" class="form-control" value="" required maxlength="255">
+                            <input type="hidden" name="_csrf" value="{{ token }}" />
+                            <input type="hidden" name="controlador" value="Usuario" />
+                            <input type="hidden" name="funcion" value="editarDato" />
+                            <input type="hidden" name="tipo" value="pw" />
+                        </div>
+                        <button type="submit" class="btn btn-success">Actualizar</button>
+                    </form>
+                </div>
+
+                <!-- formulario para actualizar el apellido -->
+                <div class="collapse" id="Apellido">
+                    <form action="login?actua=apellido" method="post" onsubmit="return confirm('¿Estás seguro?');">
+                        <div class="form-group">
+                            <label for="apellido">Apellido:</label>
+                            <input type="text" id="apellido" name="apellido" class="form-control" value="{{ usuario.apellido }}" required maxlength="20" >
+                            <input type="hidden" name="_csrf" value="{{ token }}" />
+                            <input type="hidden" name="controlador" value="Usuario" />
+                            <input type="hidden" name="funcion" value="editarDato" />
+                            <input type="hidden" name="tipo" value="apellido" />
+                        </div>
+                        <button type="submit" class="btn btn-success">Actualizar</button>
+                    </form>
+                </div>
+
+                <!-- formulario para actualizar el telefono -->
+                <div class="collapse" id="Telefono">
+                    <form action="login?actua=telefono" method="post" onsubmit="return confirm('¿Estás seguro?');">
+                        <div class="form-group">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" name="telefono" class="form-control" value="{{ usuario.telefono }}" required  minlength="9" maxlength="9" >
+                            <input type="hidden" name="_csrf" value="{{ token }}" />
+                            <input type="hidden" name="controlador" value="Usuario" />
+                            <input type="hidden" name="funcion" value="editarDato" />
+                            <input type="hidden" name="tipo" value="telefono" />
+                        </div>
+                        <button type="submit" class="btn btn-success">Actualizar</button>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
     </div>
-<!-- FIN ARTICULOS -->
+</div>
+<!-- FIN CUERPO PRINCIPAL -->
 
 {% if mensaje %}
     <script>
