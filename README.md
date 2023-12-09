@@ -40,4 +40,4 @@ Ahora deberías poder ejecutar el proyecto en tu entorno local.
 
 Ejemplos de uso aquí.
 
-## Datos_de_Interes
+## Datos de Interes
