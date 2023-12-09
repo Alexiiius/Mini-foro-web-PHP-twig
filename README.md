@@ -18,7 +18,7 @@ No se contempla que el usuario pueda eliminar su cuenta.
 
 Para instalar y ejecutar este proyecto, sigue estos pasos:
 
-1. Asegúrate de tener instalado `npm` y `composer` en tu sistema. Si no los tienes, puedes descargarlos desde [aquí](https://www.npmjs.com/get-npm) y [aquí](https://getcomposer.org/download/), respectivamente.
+1. Asegúrate de tener instalado `composer` en tu sistema. Si no lo tienes, puedes descargarlo desde [aquí](https://getcomposer.org/download/).
 
 2. Clona este repositorio en tu máquina local usando `git clone`.
 
@@ -38,6 +38,30 @@ Ahora deberías poder ejecutar el proyecto en tu entorno local.
 
 ## Uso
 
-Ejemplos de uso aquí.
+Teniendo en cuenta que se empleo el script SQL adjunto para crear y poblar la base de datos, se disponen los siguientes usuarios de prueba.
+
+1. `prueba@gmail.com` y `profesor@gmail.com` con sus respectivas contraseñas `prueba` y `profesor`.
+
+2. En caso de querer añadir a mano mediante SQL un nuevo usuario, tener en cuenta que las contraseñas se encriptan en ARGON2ID desde el servidor.
+
+3. En el mismo poblado se incluyen articulos ya creados y puntuados para que se pueda probar directamente su uso.
+
+4. Para crear un nuevo usuario se debe realizar desde el formulario de registro `/registro` y para logearse desde el formulario de login en `/login`.
+
+5. El listado principal de todos los articulos se encuentra en `/home` mientras que el listado de articulos individual del usuario se encuentra en `/personal`.
+
+6. Es posible ver el listado de articulos de un usuario en concreto pinchando en su nombre.
+
+7. Para editar los datos del usuario se emplean los formularios situados en `/perfil`.
+
+Cabe destacar que para hacer uso de cualquier pagina concerniente a los usuarios, se debe estar logeado, de otro modo el servidor redirigira al login.
 
 ## Datos de Interes
+
+1. La web esta desplegada [aquí](https://alejandrosanchezfernandez.duckdns.org/). Sin embargo es necesario encender la maquina EC2 de amazon donde esta hosteada de momento. Contacte conmigo en caso de querer disponer de ella para que encienda la maquina.
+
+2. La arquitectura del proyecto se basa en el patrón de diseño MVC, utilizando PDO para interactuar con la base de datos, empleado  patrones singleton...
+
+3. También se ha hecho uso de extensiones Twig, específicamente la implementación de la interfaz `GlobalsInterface` para facilitar la manipulación y presentación de datos en las vistas.
+
+4. El codigo en algunas partes es confuso y poco ordenado, del mismo modo hay partes que se pueden optimizar.
