@@ -39,8 +39,15 @@ VALUES ('alexius1996@gmail.com', 'Alex', '$argon2id$v=19$m=65536,t=4,p=1$L1hVUDI
 
 #SELECT * FROM Usuarios WHERE email = 'usuario@example.com';
 
-#INSERT INTO Articulos (id_autor, titulo, contenido) VALUES (2, 'Título del Artículo', 'Contenido del Artículo');
-#INSERT INTO Ratings (id_usuario, id_articulo, puntuaje) VALUES (1, 2, 8.5);
+#Usuarios de prueba
+INSERT INTO Articulos (id_autor, titulo, contenido) VALUES (2, 'Prueba', 'Mi primer mensaje despues de desplegar! BIEN! SON LAS 2 DE LA MAÑANA YUJU'),
+(2, 'Puntuame', 'Como puede ver los otros articulos no tienen nota, ¿puedes puntuarme?'),
+(1, 'Contraseñas', 'alexius1996@gmail.com 12345 prueba@gmail.com prueba profesor@gmail.com profesor'),
+(2, 'Otro', 'Otro mensaje por si quieres puntuarme!'),
+(3, 'Mensaje Propio', 'Tienes un articulo propio para borrarlo y ver que no puedes puntuarte a ti mismo! ¿Probaste ya a crear un articulo?');
+
+#Rating de prueba
+INSERT INTO Ratings (id_usuario, id_articulo, puntuaje) VALUES (1, 2, 5.7);
 
 
 #select * from Usuarios;
