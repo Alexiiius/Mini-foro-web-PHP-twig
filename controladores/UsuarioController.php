@@ -72,7 +72,7 @@ class UsuarioController extends Controller{
 
         $idMensaje = $_GET["mensaje"]??0;
 
-        if ($idMensaje !== 3 && $idMensaje !== 0) {
+        if ($idMensaje != 3 && $idMensaje !== 0) {
             $idMensaje = 0;
         }
         
